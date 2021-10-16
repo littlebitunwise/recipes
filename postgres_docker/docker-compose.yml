@@ -11,6 +11,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
     image: postgres_timescale_postgis
+    ports:
+      - 5432:5432
     env_file:
       .envs/.production/.postgres
     volumes:
