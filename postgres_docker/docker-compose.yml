@@ -1,0 +1,18 @@
+version: '3'
+
+volumes:
+	postgres_data: {}
+	postgres_data_backups: {}
+
+services:
+	postgres:
+		container_name: postgres
+		build:
+			context: .
+			dockerfile: ./Dockerfile
+		image: postgres_timescale_postgis
+		env_file:
+			.envs/.production/.postgres
+		volumes:
+			- postgres_data:/var/lib/postgresql/data:Z
+			- postgres_data_backups:/backups:z
